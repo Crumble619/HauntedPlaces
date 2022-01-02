@@ -9,6 +9,8 @@ import SwiftUI
 
 struct LocationsPreviewView: View {
     
+    @EnvironmentObject private var vm: LocationsViewModel
+    
     let location: Location
     
     var body: some View {
@@ -51,8 +53,8 @@ extension LocationsPreviewView {
             if let imageName = location.imageNames.first {
                 Image(imageName)
                     .resizable()
-                    .scaledToFit()
-                    .frame(height: 100)
+                    .scaledToFill()
+                    .frame(width: 150, height: 100)
                     .cornerRadius(10)
             }
         }
@@ -74,7 +76,7 @@ extension LocationsPreviewView {
     
     private var learnMoreButton: some View {
         Button {
-            
+            vm.sheetLocation = location
         } label: {
             Text("Learn More")
                 .font(.headline)
