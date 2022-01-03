@@ -12,19 +12,15 @@ struct LocationsView: View {
     
     @EnvironmentObject private var vm: LocationsViewModel
     
-    @State private var locationPresented: Bool = false
-    
     var body: some View {
         ZStack {
             mapLayer
                 .ignoresSafeArea()
             VStack {
                 Spacer()
-                if locationPresented {
                         LocationsPreviewView(location: vm.mapLocation)
                             .shadow(color: Color.black.opacity(0.3), radius: 20)
                             .padding(5)
-                }
             }
         }
         .sheet(item: $vm.sheetLocation, onDismiss: nil) { location in
@@ -41,7 +37,6 @@ struct LocationsView: View {
                     .shadow(radius: 10)
                     .onTapGesture {
                         vm.showNextLocation(location: location)
-                        locationPresented = true
                     }
             }
         })

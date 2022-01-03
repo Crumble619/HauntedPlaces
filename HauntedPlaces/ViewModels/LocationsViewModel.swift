@@ -31,8 +31,9 @@ class LocationsViewModel: ObservableObject {
     init() {
         let locations = LocationsDataService.locations
         self.locations = locations
-        self.mapLocation = locations.first!
-        self.updateMapRegion(location: locations.first!)
+        let openingLocation = locations.randomElement()
+        self.mapLocation = openingLocation!
+        self.updateMapRegion(location: openingLocation!)
     }
     
     private func updateMapRegion(location: Location) {
