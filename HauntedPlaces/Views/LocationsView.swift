@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MapKit
+import CoreLocation
 import CoreLocationUI
 
 struct LocationsView: View {
@@ -49,7 +50,7 @@ struct LocationsView: View {
     
     private var locationButton: some View {
         LocationButton(.currentLocation) {
-            
+            vm.requestAllowOnceLocationPermission()
         }
         .labelStyle(.iconOnly)
         .cornerRadius(10)

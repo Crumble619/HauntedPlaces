@@ -8,8 +8,12 @@
 import Foundation
 import MapKit
 import SwiftUI
+import CoreLocation
+import CoreLocationUI
 
-class LocationsViewModel: ObservableObject {
+class LocationsViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
+    
+    @Published var manager = CLLocationManager()
     
     // All loaded locations
     @Published var locations: [Location]
@@ -28,11 +32,13 @@ class LocationsViewModel: ObservableObject {
     
     let mapSpan = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
     
-    init() {
+    override init() {
         let locations = LocationsDataService.locations
         self.locations = locations
         let openingLocation = locations.randomElement()
         self.mapLocation = openingLocation!
+        super.init()
+        manager.delegate = self
         self.updateMapRegion(location: openingLocation!)
     }
     
@@ -48,5 +54,23 @@ class LocationsViewModel: ObservableObject {
         withAnimation(.easeInOut) {
             mapLocation = location
         }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error.localizedDescription)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let latestLocation = locations.last else {
+            return
+        }
+        DispatchQueue.main.async {
+            self.mapRegion = MKCoordinateRegion(center: latestLocation.coordinate, span: self.mapSpan)
+        }
+        //mapRegion = MKCoordinateRegion(center: location, span: mapSpan)
+    }
+    
+    func requestAllowOnceLocationPermission() {
+        manager.requestLocation()
     }
 }
