@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MapKit
+import CoreLocationUI
 
 struct LocationsView: View {
     
@@ -18,9 +19,13 @@ struct LocationsView: View {
                 .ignoresSafeArea()
             VStack {
                 Spacer()
-                        LocationsPreviewView(location: vm.mapLocation)
-                            .shadow(color: Color.black.opacity(0.3), radius: 20)
-                            .padding(5)
+                HStack {
+                    Spacer()
+                    locationButton
+                }
+                LocationsPreviewView(location: vm.mapLocation)
+                    .shadow(radius: 10)
+                    .padding(5)
             }
         }
         .sheet(item: $vm.sheetLocation, onDismiss: nil) { location in
@@ -40,6 +45,19 @@ struct LocationsView: View {
                     }
             }
         })
+    }
+    
+    private var locationButton: some View {
+        LocationButton(.currentLocation) {
+            
+        }
+        .labelStyle(.iconOnly)
+        .cornerRadius(10)
+        .symbolVariant(.fill)
+        .foregroundColor(.white)
+        .padding(.trailing, 66)
+        .offset(y: 78)
+        .shadow(radius: 10)
     }
 }
 

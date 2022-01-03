@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreLocationUI
 
 struct LocationsPreviewView: View {
     
@@ -21,15 +22,19 @@ struct LocationsPreviewView: View {
                 titleSection
             }
             VStack {
+                
                 learnMoreButton
-                otherButton
-            }.padding(.leading)
+                    .padding(.bottom, 25)
+                //otherButton
+            }
+            .padding(.leading)
+            .padding(.top, 74)
         }
         .padding(20)
         .background(
             RoundedRectangle(cornerRadius: 10)
                 .fill(.ultraThinMaterial)
-                .offset(y: 65)
+                .offset(y: 75)
         )
         .cornerRadius(10)
     }
@@ -85,14 +90,14 @@ extension LocationsPreviewView {
         .buttonStyle(.borderedProminent)
     }
     
-    private var otherButton: some View {
-        Button {
-            
-        } label: {
-            Text("Other")
-                .font(.headline)
-                .frame(width: 100, height: 36)
-        }
-        .buttonStyle(.borderedProminent)
-    }
+//    private var otherButton: some View {
+//        Button {
+//
+//        } label: {
+//            Text("Other")
+//                .font(.headline)
+//                .frame(width: 100, height: 36)
+//        }
+//        .buttonStyle(.borderedProminent)
+//    }
 }
