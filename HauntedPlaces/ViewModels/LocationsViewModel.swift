@@ -13,7 +13,7 @@ import CoreLocationUI
 
 class LocationsViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
-    @Published var manager = CLLocationManager()
+    @Published var locationManager = CLLocationManager()
     
     // All loaded locations
     @Published var locations: [Location]
@@ -38,7 +38,7 @@ class LocationsViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
         let openingLocation = locations.randomElement()
         self.mapLocation = openingLocation!
         super.init()
-        manager.delegate = self
+        locationManager.delegate = self
         self.updateMapRegion(location: openingLocation!)
     }
     
@@ -71,6 +71,6 @@ class LocationsViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
     }
     
     func requestAllowOnceLocationPermission() {
-        manager.requestLocation()
+        locationManager.requestLocation()
     }
 }

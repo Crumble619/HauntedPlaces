@@ -12,7 +12,7 @@ import CoreLocationUI
 
 struct LocationsView: View {
     
-    @EnvironmentObject private var vm: LocationsViewModel
+    @EnvironmentObject var vm: LocationsViewModel
     
     var body: some View {
         ZStack {
@@ -20,13 +20,12 @@ struct LocationsView: View {
                 .ignoresSafeArea()
             VStack {
                 Spacer()
-                HStack {
-                    Spacer()
-                    locationButton
-                }
                 LocationsPreviewView(location: vm.mapLocation)
                     .shadow(radius: 10)
                     .padding(5)
+                    .overlay(alignment: .topTrailing) {
+                        locationButton
+                    }
             }
         }
         .sheet(item: $vm.sheetLocation, onDismiss: nil) { location in
@@ -36,6 +35,7 @@ struct LocationsView: View {
     
     private var mapLayer: some View {
         Map(coordinateRegion: $vm.mapRegion,
+            showsUserLocation: true,
             annotationItems: vm.locations,
             annotationContent: { location in
             MapAnnotation(coordinate: location.coordinates) {
@@ -46,6 +46,7 @@ struct LocationsView: View {
                     }
             }
         })
+            
     }
     
     private var locationButton: some View {
@@ -56,9 +57,8 @@ struct LocationsView: View {
         .cornerRadius(10)
         .symbolVariant(.fill)
         .foregroundColor(.white)
-        .padding(.trailing, 66)
-        .offset(y: 78)
         .shadow(radius: 10)
+        .offset(x: -68, y: 25)
     }
 }
 
