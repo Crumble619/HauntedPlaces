@@ -15,7 +15,7 @@ class LocationsDataService {
             name: "Amityville Horror House",
             cityName: "Amityville, NY",
             coordinates: CLLocationCoordinate2D(latitude: 40.666, longitude: -73.415),
-            description: "The Colosseum is an oval amphitheatre in the centre of the city of Rome, Italy, just east of the Roman Forum. It is the largest ancient amphitheatre ever built, and is still the largest standing amphitheatre in the world today, despite its age.",
+            description: "The Amityville Horror House was the site of a famous haunting in 1975, where a family experienced terrifying apparitions and supernatural events. The real horror of the Amityville story lies in the DeFeo murders, where Ronald DeFeo killed his family in 1974, leading to the infamous haunting tale.",
             imageNames: [
                 "AmityHouseHistoric",
                 "AmityHouseModern",
@@ -25,7 +25,7 @@ class LocationsDataService {
             name: "Hotel Del",
             cityName: "Coronado, CA",
             coordinates: CLLocationCoordinate2D(latitude: 32.6803, longitude: -117.1772),
-            description: "The Colosseum is an oval amphitheatre in the centre of the city of Rome, Italy, just east of the Roman Forum. It is the largest ancient amphitheatre ever built, and is still the largest standing amphitheatre in the world today, despite its age.",
+            description: "Guests and employees have been experiencing supernatural occurrences almost since the day the hotel opened. Many people have attributed their encounters to Kate Morgan, one of the The Del’s former guests, who committed suicide on the beach in 1892. One guest reported her initials appeared to be drawn in a steamy bathroom mirror.",
             imageNames: [
                 "HotelDelHistoric",
                 "HotelDelModern",
@@ -36,7 +36,7 @@ class LocationsDataService {
             name: "Whaley House",
             cityName: "San Diego, CA",
             coordinates: CLLocationCoordinate2D(latitude: 32.7528, longitude: -117.1946),
-            description: "The Pantheon is a former Roman temple and since the year 609 a Catholic church, in Rome, Italy, on the site of an earlier temple commissioned by Marcus Agrippa during the reign of Augustus.",
+            description: "The Whaley House has long been associated with paranormal activity, attracting visitors and ghost enthusiasts from around the world. The spirit of Yankee Jim Robinson, who met his demise on the property, is believed to roam the house, and several family members are said to linger in the afterlife as well.",
             imageNames: [
                 "WhaleyHouseHistoric",
                 "WhaleyHouseModern",
